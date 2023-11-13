@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Stack, Typography } from '@mui/material'
-import { common, blue } from '@mui/material/colors';
+import { common } from '@mui/material/colors';
 
 import GroupsIcon from '@mui/icons-material/Groups';
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
@@ -18,7 +18,7 @@ export default function MuiBottomNavigation(props: Props){
         <Stack
             sx={{
                 width: '100%',
-                backgroundColor: 'rgb(244, 244, 244)',
+                backgroundColor: '#728cff',
                 flexDirection: 'row',
                 display: 'flex',
                 justifyContent: 'space-around',
@@ -46,7 +46,7 @@ export default function MuiBottomNavigation(props: Props){
                     {value == 0 ? (
                         <CatchingPokemonIcon
                             sx={{
-                                color: blue.A400,
+                                color: common.white,
                                 fontSize: '26px',
                                 transition: '.2s',
                             }}
@@ -64,7 +64,7 @@ export default function MuiBottomNavigation(props: Props){
                                 sx={{
                                     fontSize: '10px',
                                     textAlign: 'center',
-                                    color: blue.A400,
+                                    color: common.white,
                                     transition: '.2s',
                                 }}
                                 variant='subtitle2'
@@ -89,7 +89,7 @@ export default function MuiBottomNavigation(props: Props){
                     {value == 1 ? (
                         <GroupsIcon
                             sx={{
-                                color: blue.A400,
+                                color: common.white,
                                 fontSize: '26px',
                                 transition: '.2s',
                             }}
@@ -107,7 +107,7 @@ export default function MuiBottomNavigation(props: Props){
                             sx={{
                                 fontSize: '10px',
                                 textAlign: 'center',
-                                color: blue.A400,
+                                color: common.white,
                                 transition: '.2s',
                             }}
                             variant='subtitle2'

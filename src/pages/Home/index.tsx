@@ -5,6 +5,9 @@ import { yellow } from '@mui/material/colors';
 import MuiBottomNavigation from '../../components/MuiBottomNavigation';
 import Card from '../../components/Card';
 
+import MuiMenu from '../../components/MuiMenu';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 type Pkmon = {
     data:{
         name: string,
@@ -57,19 +60,28 @@ export default function Home() {
         return response
     }
 
+    const matches = useMediaQuery('(max-width:600px)');
 
     return(
         <Stack
             sx={{
                 width: '100%',
                 height: '100%',
-                paddingBottom: '130px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
+                paddingTop: '74px',
+                paddingBottom: {
+                    xs: '130px',
+                    sm: '130px',
+                    md: '0px',
+                    lg: '0px',
+                    xl: '0px'
+                }
             }}
         >
+            <MuiMenu activo={0} />
             <Stack
                 sx={{
                     display: 'flex',
@@ -109,7 +121,9 @@ export default function Home() {
                     }
                 }}
             >carregar mais</Button>
-            <MuiBottomNavigation activo={0} />
+            {matches == true && (
+                <MuiBottomNavigation activo={0} />
+            )}
         </Stack>
     )
 }

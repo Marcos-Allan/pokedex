@@ -111,7 +111,7 @@ export default function Card(props: Props){
                         color: common.black,
                         transition: '.3s',
                         '&:hover':{
-                            color: blue.A400,
+                            color: '#72ff74',
                             fontSize: '28px',
                             right: '3%',
                             top: '3%',
@@ -129,7 +129,7 @@ export default function Card(props: Props){
                         color: common.black,
                         transition: '.3s',
                         '&:hover':{
-                            color: blue.A400,
+                            color: '#fa2d2d',
                             fontSize: '28px',
                             right: '3%',
                             top: '3%',

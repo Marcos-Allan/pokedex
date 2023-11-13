@@ -4,6 +4,8 @@ import axios from 'axios'
 import { Stack } from '@mui/material'
 import MuiBottomNavigation from '../../components/MuiBottomNavigation';
 import Card from '../../components/Card';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import MuiMenu from '../../components/MuiMenu';
 
 interface Pkmon {
     id: number,
@@ -26,14 +28,23 @@ export default function Team() {
         })
     },[])
 
+    const matches = useMediaQuery('(max-width:600px)');
+
     return(
         <Stack
             sx={{
                 width: '100%',
                 height: '100%',
-                paddingBottom: '130px',
+                paddingBottom: {
+                    xs: '130px',
+                    sm: '130px',
+                    md: '0px',
+                    lg: '0px',
+                    xl: '0px'
+                }
             }}
         >
+            <MuiMenu activo={1} />
             <Stack
                 sx={{
                     display: 'flex',
@@ -41,6 +52,7 @@ export default function Team() {
                     flexWrap: 'wrap',
                     justifyContent: 'center',
                     alignItems: 'center',
+                    paddingTop: '74px',
                 }}
             >
                 {pkmon.map((pkm:Pkmon, key) => (
@@ -55,7 +67,9 @@ export default function Team() {
                     />
                 ))}
             </Stack>
-            <MuiBottomNavigation activo={1}/>
+            {matches == true && (
+                <MuiBottomNavigation activo={1}/>
+            )}
         </Stack>
     )
 }
