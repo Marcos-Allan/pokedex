@@ -1,4 +1,5 @@
-import { Stack, Typography } from '@mui/material'
+import { useState } from 'react'
+import { Stack, Typography, InputBase, Button } from '@mui/material'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link } from 'react-router-dom';
 
@@ -9,14 +10,14 @@ interface Props {
 export default function MuiMenu(props: Props){
     
     const matches = useMediaQuery('(max-width:600px)');
+    const [inputText, setInputText] = useState<string>('')
     
     return(
         <Stack
             sx={{
                 backgroundColor: '#728cff',
-                width: '100%',
+                width: '90vw',
                 padding: '20px',
-                paddingLeft: '60px',
                 position: 'fixed',
                 display: 'flex',
                 justifyContent: 'space-around',
@@ -31,7 +32,7 @@ export default function MuiMenu(props: Props){
             <Typography
                 sx={{
                     flexGrow: 1,
-                    color: '#efefef',
+                    color: '#ffffff',
                     textTransform: 'uppercase',
                     fontWeight: 'bold',
                     flexWrap: 'wrap',
@@ -41,13 +42,64 @@ export default function MuiMenu(props: Props){
             >
                 pokédex
             </Typography>
+            {props.activo == 0 && (
+                <Stack
+                    sx={{
+                        flex: 2,
+                        display: 'flex',
+                        justifyContent: 'flex-start',
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                    }}
+                >
+                    <InputBase
+                        sx={{
+                            color: '#ffffff',
+                            border: '1px solid #ffffff',
+                            padding: '0px 10px',
+                            flex: 3,
+                            borderTopLeftRadius: '10px',
+                            borderBottomLeftRadius: '10px',
+                            height: '26px',
+                        }}
+                        onChange={(e) => setInputText(e.target.value as string)}
+                        value={inputText}
+                    />
+                    <Button
+                        variant='contained'
+                        sx={{
+                            flex: 1,
+                            height: '26px',
+                            borderBottomLeftRadius: '0px',
+                            borderTopLeftRadius: '0px',
+                            backgroundColor: '#ffffff',
+                            padding: '2px',
+                            '&:hover': {
+                                flex: 1,
+                                borderBottomLeftRadius: '0px',
+                                borderTopLeftRadius: '0px',
+                                backgroundColor: '#ffffff',
+                            }
+                        }}
+                    >
+                        <Typography
+                            sx={{
+                                color: '#728cff',
+                                fontSize: '12px',
+                            }}
+                        >
+                            search
+                        </Typography>
+                    </Button>
+                </Stack>
+            )}
                 {matches == false && (
                     <Stack
                         sx={{
                             display: 'flex',
                             flexDirection: 'row',
-                            // backgroundColor: 'orange',
-                            flexGrow: 2,
+                            justifyContent: 'center',
+                            flexGrow: 1,
                             }}
                     >
                         <Link to='/'>
@@ -119,6 +171,7 @@ export default function MuiMenu(props: Props){
                                 </Typography>
                             )}
                         </Link>
+                        
                     </Stack>
                 )}
         </Stack>

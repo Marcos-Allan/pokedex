@@ -51,7 +51,7 @@ export default function Home() {
     
     function loadData(num:number){
         var endpoints = []
-        for(let i = 1; i < num+10; i++){
+        for(let i = 1; i < num+20; i++){
             endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
         }
 
@@ -77,7 +77,7 @@ export default function Home() {
                     sm: '130px',
                     md: '0px',
                     lg: '0px',
-                    xl: '0px'
+                    xl: '0px',
                 }
             }}
         >
@@ -107,8 +107,19 @@ export default function Home() {
             <Button
                 variant='contained'
                 onClick={() => {
-                    setPkmonNumber(pkmonNumber + 10)
-                    setLoading(!loading)
+                    if(pkmonNumber >= 120 && pkmonNumber < 132){
+                        setPkmonNumber(132)
+                        setLoading(!loading)
+                        return
+                    }else if(pkmonNumber >= 220 && pkmonNumber < 232){
+                        setPkmonNumber(231)
+                        setLoading(!loading)
+                        return
+                    }else{
+                        setPkmonNumber(pkmonNumber + 20)
+                        setLoading(!loading)
+                        return
+                    }
                 }}
                 sx={{
                     width: '40%',
