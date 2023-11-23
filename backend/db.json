@@ -1,3 +1,20 @@
 {
-  "team": []
+  "team": [
+    {
+      "id": 1,
+      "number": 1,
+      "name": "bulbasaur",
+      "type1": "grass",
+      "type2": "poison",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif"
+    },
+    {
+      "id": 2,
+      "number": 150,
+      "name": "mewtwo",
+      "type1": "psychic",
+      "type2": "",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/150.gif"
+    }
+  ]
 }

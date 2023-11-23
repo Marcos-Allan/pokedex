@@ -41,9 +41,13 @@ type Pkmon = {
 export default function Home() {
 
     const [pkmons, setPkmons] = useState([])
-    
+
     const [pkmonNumber, setPkmonNumber] = useState<number>(1)
     const [loading, setLoading] = useState<Boolean>(true)
+
+    function onAdd() {
+        return "AAAAAAAAA"    
+    }
 
     useEffect(() => {
         loadData(pkmonNumber)
@@ -100,6 +104,7 @@ export default function Home() {
                         type2={pokemon.data.types[1] ? pokemon.data.types[1].type.name : ''}
                         img={pokemon['data']['sprites']['versions']['generation-v']['black-white']['animated']['front_default']}
                         isAdd={true}
+                        onAdd={onAdd}
                     />
                 ))}
             </Stack>

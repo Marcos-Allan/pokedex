@@ -3,7 +3,7 @@ import { Typography, Box } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { common, blue } from '@mui/material/colors';
+import { common } from '@mui/material/colors';
 
 interface Colors {
     normal: string,
@@ -57,7 +57,8 @@ interface Props {
     type2: string,
     key: any,
     isAdd: boolean,
-    onDelete: any
+    onDelete: any,
+    onAdd: any
 }
 
 export default function Card(props: Props){
@@ -103,6 +104,7 @@ export default function Card(props: Props){
         >
             {props.isAdd === true ? (
                 <AddIcon
+                    onClick={props.onAdd}
                     sx={{
                         position: 'absolute',
                         top: '4%',

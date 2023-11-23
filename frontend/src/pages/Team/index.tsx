@@ -29,7 +29,6 @@ export default function Team() {
     useEffect(() => {
         axios.get('http://localhost:5000/team')
         .then((response) => {
-            console.log(response.data[0])
             setPkmon(response.data)
         })
     },[])
