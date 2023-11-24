@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Stack, Button } from '@mui/material'
-import { yellow } from '@mui/material/colors';
 import MuiBottomNavigation from '../../components/MuiBottomNavigation';
 import Card from '../../components/Card';
 
@@ -41,12 +40,44 @@ type Pkmon = {
 export default function Home() {
 
     const [pkmons, setPkmons] = useState([])
+    let pkmAdded = {}
 
     const [pkmonNumber, setPkmonNumber] = useState<number>(1)
     const [loading, setLoading] = useState<Boolean>(true)
 
-    function onAdd() {
-        return "AAAAAAAAA"    
+    async function savePkm(idPK:number) {
+        
+        pkmAdded = {}
+        
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${idPK}`)
+        .then(function (response) {
+            pkmAdded = response.data
+            onAdd(pkmAdded)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+        .finally(function () {
+            console.log('TERMINOU')
+        })
+    }
+
+    async function onAdd(pokemon) {
+
+        await axios.post('http://localhost:5000/team', {
+            id: crypto.randomUUID(),
+            number: pokemon.id,
+            name: pokemon.name,
+            type1: pokemon.types[0].type.name,
+            type2: pokemon.types[1] ? pokemon.types[1].type.name : "",
+            img: pokemon.sprites['versions']['generation-v']['black-white']['animated']['front_default']
+        })
+        .then(function () {
+            console.log('POKEMON ADICONADO AO BD')
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     }
 
     useEffect(() => {
@@ -76,6 +107,10 @@ export default function Home() {
                 justifyContent: 'center',
                 alignItems: 'center',
                 paddingTop: '74px',
+                '::-webkit-slider-thumb':{
+                    backgroundColor: 'orange',
+                    width: '10px'
+                },
                 paddingBottom: {
                     xs: '130px',
                     sm: '130px',
@@ -104,7 +139,7 @@ export default function Home() {
                         type2={pokemon.data.types[1] ? pokemon.data.types[1].type.name : ''}
                         img={pokemon['data']['sprites']['versions']['generation-v']['black-white']['animated']['front_default']}
                         isAdd={true}
-                        onAdd={onAdd}
+                        onAdd={() => savePkm(pokemon.data.id)}
                     />
                 ))}
             </Stack>
@@ -127,13 +162,20 @@ export default function Home() {
                     }
                 }}
                 sx={{
-                    width: '40%',
+                    width: {
+                        xs: '220px',
+                        sm: '240px',
+                        md: '290px',
+                        lg: '200px',
+                        xl: '290px',
+                    },
                     textTransform: 'uppercase',
                     marginTop: '10px',
                     fontSize: '17px',
-                    backgroundColor: yellow.A400,
+                    backgroundColor: '#97aaff',
+                    transition: '0.4s',
                     '&:hover':{
-                        backgroundColor: yellow.A700,
+                        backgroundColor: '#0b2495',
                     }
                 }}
             >carregar mais</Button>

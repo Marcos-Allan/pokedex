@@ -16,7 +16,13 @@ export default function MuiMenu(props: Props){
         <Stack
             sx={{
                 backgroundColor: '#728cff',
-                width: '100vw',
+                width: {
+                    xs: '100vw',
+                    sm: '100vw',
+                    md: '100vw',
+                    lg: '100vw',
+                    xl: '100vw',
+                },
                 padding: '20px',
                 position: 'fixed',
                 display: 'flex',
@@ -74,6 +80,13 @@ export default function MuiMenu(props: Props){
                             borderTopLeftRadius: '0px',
                             backgroundColor: '#ffffff',
                             padding: '2px',
+                            marginRight: {
+                                xs: '30px',
+                                sm: '10px',
+                                md: '10px',
+                                lg: '10px',
+                                xl: '10px',
+                            },
                             '&:hover': {
                                 flex: 1,
                                 borderBottomLeftRadius: '0px',

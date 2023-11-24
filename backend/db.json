@@ -1,20 +1,52 @@
 {
   "team": [
     {
-      "id": 1,
-      "number": 1,
-      "name": "bulbasaur",
+      "id": "305ec867-9a53-47ec-9115-7d291742a935",
+      "number": 3,
+      "name": "venusaur",
       "type1": "grass",
       "type2": "poison",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif"
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/3.gif"
     },
     {
-      "id": 2,
-      "number": 150,
-      "name": "mewtwo",
-      "type1": "psychic",
+      "id": "e839f686-8b62-4002-9c8d-24514ca7d373",
+      "number": 6,
+      "name": "charizard",
+      "type1": "fire",
+      "type2": "flying",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif"
+    },
+    {
+      "id": "d57fbc71-18dd-4945-955d-c8650dc7845c",
+      "number": 9,
+      "name": "blastoise",
+      "type1": "water",
       "type2": "",
-      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/150.gif"
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/9.gif"
+    },
+    {
+      "id": "6da8f932-d876-47b8-a2af-2612e4907eb5",
+      "number": 146,
+      "name": "moltres",
+      "type1": "fire",
+      "type2": "flying",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/146.gif"
+    },
+    {
+      "id": "b55438c3-70f2-435e-9f93-e00e14f023d1",
+      "number": 145,
+      "name": "zapdos",
+      "type1": "electric",
+      "type2": "flying",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/145.gif"
+    },
+    {
+      "id": "5d90cd45-7c16-4ee2-8592-4e20ae4e7690",
+      "number": 144,
+      "name": "articuno",
+      "type1": "ice",
+      "type2": "flying",
+      "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/144.gif"
     }
   ]
 }

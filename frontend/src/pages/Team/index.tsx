@@ -20,10 +20,13 @@ interface Pkmon {
 export default function Team() {
 
     const [pkmon, setPkmon] = useState([])
+    const [load, setLoad] = useState<Boolean>(true)
 
     function onDelete(id:number) {
         console.log(id)
         axios.delete(`http://localhost:5000/team/${id}`)
+
+        setLoad(!load)
     }
 
     useEffect(() => {
@@ -31,7 +34,7 @@ export default function Team() {
         .then((response) => {
             setPkmon(response.data)
         })
-    },[])
+    },[load])
 
     const matches = useMediaQuery('(max-width:600px)');
 

@@ -70,19 +70,19 @@ export default function Card(props: Props){
         <Box
             key={props.key}
             sx={{
-                minWidth: {
+                width: {
+                    xs: '220px',
+                    sm: '240px',
+                    md: '290px',
+                    lg: '200px',
+                    xl: '290px',
+                },
+                height:{
                     xs: '200px',
                     sm: '220px',
-                    md: '270px',
-                    lg: '270px',
-                    xl: '270px',
-                },
-                minHeight:{
-                    xs: '130px',
-                    sm: '150px',
-                    md: '300px',
-                    lg: '300px',
-                    xl: '300px',
+                    md: '370px',
+                    lg: '370px',
+                    xl: '370px',
                 },
                 margin: '4px 4px',
                 display: 'flex',
@@ -156,6 +156,7 @@ export default function Card(props: Props){
                 sx={{
                     textAlign: 'center',
                     fontSize: '17px',
+                    textTransform: 'capitalize'
                 }}
                 variant='subtitle2'
             >
@@ -184,7 +185,8 @@ export default function Card(props: Props){
                     >
                 {props.type1}
                 </Typography>
-                {props.type2 !== '' && (<Typography
+                {props.type2 !== '' && (
+                    <Typography
                         sx={{
                             textAlign: 'center',
                             fontSize: '17px',
