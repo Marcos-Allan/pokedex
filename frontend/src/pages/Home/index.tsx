@@ -6,6 +6,7 @@ import MuiBottomNavigation from '../../components/MuiBottomNavigation';
 import Card from '../../components/Card';
 import MuiMenu from '../../components/MuiMenu';
 import useMediaQuery from '@mui/material/useMediaQuery';
+
 type Pkmon = {
     data:{
         name: string,
@@ -35,19 +36,24 @@ type Pkmon = {
         ],
     }
 }
+
 export default function Home() {
     const [pkmons, setPkmons] = useState([])
-    let pkmAdded = {}
+    let pkmAdded:Pkmon | any = {}
     const [pkmonNumber, setPkmonNumber] = useState<number>(1)
     const [loading, setLoading] = useState<Boolean>(true)
-      
+    
+    function onReturn() {
+        return
+    }
+
     async function savePkm(idPK:number) {
         
         pkmAdded = {}
         
         axios.get(`https://pokeapi.co/api/v2/pokemon/${idPK}`)
         .then(function (response) {
-            pkmAdded = response.data
+            pkmAdded = response
             onAdd(pkmAdded)
         })
         .catch(function (error) {
@@ -57,14 +63,14 @@ export default function Home() {
             console.log('TERMINOU')
         })
     }
-    async function onAdd(pokemon) {
+    async function onAdd(pokemon:Pkmon) {
         await axios.post('http://localhost:5000/team', {
             id: crypto.randomUUID(),
-            number: pokemon.id,
-            name: pokemon.name,
-            type1: pokemon.types[0].type.name,
-            type2: pokemon.types[1] ? pokemon.types[1].type.name : "",
-            img: pokemon.sprites['versions']['generation-v']['black-white']['animated']['front_default']
+            number: pokemon.data.id,
+            name: pokemon.data.name,
+            type1: pokemon.data.types[0].type.name,
+            type2: pokemon.data.types[1] ? pokemon.data.types[1].type.name : "",
+            img: pokemon.data.sprites['versions']['generation-v']['black-white']['animated']['front_default']
         })
         .then(function () {
             console.log('POKEMON ADICONADO AO BD')
@@ -130,6 +136,7 @@ export default function Home() {
                         img={pokemon['data']['sprites']['versions']['generation-v']['black-white']['animated']['front_default']}
                         isAdd={true}
                         onAdd={() => savePkm(pokemon.data.id)}
+                        onDelete={() => onReturn()}
                     />
                 ))}
             </Stack>

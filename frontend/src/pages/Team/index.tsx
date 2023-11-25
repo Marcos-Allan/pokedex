@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 
+import { Link } from 'react-router-dom'
+
 import axios from 'axios'
-import { Stack } from '@mui/material'
+import { Stack, Typography, Button } from '@mui/material'
 import MuiBottomNavigation from '../../components/MuiBottomNavigation';
 import Card from '../../components/Card';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -21,6 +23,10 @@ export default function Team() {
 
     const [pkmon, setPkmon] = useState([])
     const [load, setLoad] = useState<Boolean>(true)
+
+    function onReturn(){
+        return
+    }
 
     function onDelete(id:number) {
         console.log(id)
@@ -63,7 +69,7 @@ export default function Team() {
                     paddingTop: '74px',
                 }}
             >
-                {pkmon.map((pkm:Pkmon, key) => (
+                {pkmon.length > 0 ? pkmon.map((pkm:Pkmon, key) => (
                     <Card
                         id={pkm.number}
                         img={pkm.img}
@@ -73,8 +79,50 @@ export default function Team() {
                         type2={pkm.type2}
                         isAdd={false}
                         onDelete={() => onDelete(pkm.id)}
+                        onAdd={() => onReturn()}
                     />
-                ))}
+                )) : (
+                    <Stack
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            flexDirection: 'column'
+                        }}
+                    >
+                        <Typography
+                            sx={{
+                                fontSize: {
+                                    xs: '16px',
+                                    sm: '18px',
+                                    md: '24px',
+                                    lg: '24px',
+                                    xl: '24px',
+                                },
+                                letterSpacing: '4px',
+                                textTransform: 'uppercase',
+                                textAlign: 'center',
+                            }}
+                        >Sem pokémons no seu time</Typography>
+                        <Link to={'/'}>
+                            <Button
+                                variant='contained'
+                                sx={{
+                                    margin: '10px',
+                                    backgroundColor: '#97aaff',
+                                    transition: '0.4s',
+                                    '&:hover':{
+                                        backgroundColor: '#0b2495',
+                                    }
+                                }}
+                            >
+                                <Typography>
+                                    Ir para a lista de pokémons
+                                </Typography>
+                            </Button>
+                        </Link>
+                    </Stack>
+                )}
             </Stack>
             {matches == true && (
                 <MuiBottomNavigation activo={1}/>

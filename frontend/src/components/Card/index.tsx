@@ -2,26 +2,28 @@ import { Typography, Box } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { common } from '@mui/material/colors';
+
 interface Colors {
-    normal: string,
-	fire: string,
-	water: string,
-	electric: string,
-	grass: string,
-	ice: string,
-	fighting: string,
-	poison: string,
-	ground: string,
-	flying: string,
-	psychic: string,
-	bug: string,
-	rock: string,
-	ghost: string,
-	dragon: string,
-	dark: string,
-	steel: string,
-	fairy: string,
+    normal: string | any,
+	fire: string | any,
+	water: string | any,
+	electric: string | any,
+	grass: string | any,
+	ice: string | any,
+	fighting: string | any,
+	poison: string | any,
+	ground: string | any,
+	flying: string | any,
+	psychic: string | any,
+	bug: string | any,
+	rock: string | any,
+	ghost: string | any,
+	dragon: string | any,
+	dark: string | any,
+	steel: string | any,
+	fairy: string | any,
 }
+
 const colours:Colors = {
 	normal: '#A8A77A',
 	fire: '#EE8130',
@@ -41,7 +43,8 @@ const colours:Colors = {
 	dark: '#705746',
 	steel: '#B7B7CE',
 	fairy: '#D685AD',
-};
+}
+
 interface Props {
     id: number,
     img: string,
@@ -55,8 +58,9 @@ interface Props {
 }
 export default function Card(props: Props){
     
-    const bg1 = colours[props.type1]
-    const bg2 = colours[props.type2]
+    const bg1: any = colours[props.type1 as any]
+    const bg2: any = colours[props.type2 as any]
+
     return(
         <Box
             key={props.key}
