@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Stack, Button } from '@mui/material'
+
 import MuiBottomNavigation from '../../components/MuiBottomNavigation';
 import Card from '../../components/Card';
-
 import MuiMenu from '../../components/MuiMenu';
 import useMediaQuery from '@mui/material/useMediaQuery';
-
 type Pkmon = {
     data:{
         name: string,
@@ -36,15 +35,12 @@ type Pkmon = {
         ],
     }
 }
-
 export default function Home() {
-
     const [pkmons, setPkmons] = useState([])
     let pkmAdded = {}
-
     const [pkmonNumber, setPkmonNumber] = useState<number>(1)
     const [loading, setLoading] = useState<Boolean>(true)
-
+      
     async function savePkm(idPK:number) {
         
         pkmAdded = {}
@@ -61,9 +57,7 @@ export default function Home() {
             console.log('TERMINOU')
         })
     }
-
     async function onAdd(pokemon) {
-
         await axios.post('http://localhost:5000/team', {
             id: crypto.randomUUID(),
             number: pokemon.id,
@@ -79,7 +73,6 @@ export default function Home() {
             console.log(error);
         })
     }
-
     useEffect(() => {
         loadData(pkmonNumber)
     },[loading])
@@ -89,14 +82,11 @@ export default function Home() {
         for(let i = 1; i < num+20; i++){
             endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
         }
-
         console.log(endpoints)
         var response = axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then((res) => setPkmons(res as any))
         return response
     }
-
     const matches = useMediaQuery('(max-width:600px)');
-
     return(
         <Stack
             sx={{
@@ -143,7 +133,6 @@ export default function Home() {
                     />
                 ))}
             </Stack>
-
             <Button
                 variant='contained'
                 onClick={() => {

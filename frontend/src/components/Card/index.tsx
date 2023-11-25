@@ -1,10 +1,7 @@
 import { Typography, Box } from '@mui/material'
-
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 import { common } from '@mui/material/colors';
-
 interface Colors {
     normal: string,
 	fire: string,
@@ -25,8 +22,6 @@ interface Colors {
 	steel: string,
 	fairy: string,
 }
-
-
 const colours:Colors = {
 	normal: '#A8A77A',
 	fire: '#EE8130',
@@ -47,8 +42,6 @@ const colours:Colors = {
 	steel: '#B7B7CE',
 	fairy: '#D685AD',
 };
-
-
 interface Props {
     id: number,
     img: string,
@@ -60,12 +53,10 @@ interface Props {
     onDelete: any,
     onAdd: any
 }
-
 export default function Card(props: Props){
     
     const bg1 = colours[props.type1]
     const bg2 = colours[props.type2]
-
     return(
         <Box
             key={props.key}
@@ -141,7 +132,6 @@ export default function Card(props: Props){
                     }}
                 />
             )}
-
             <Typography
                 sx={{
                     textAlign: 'center',
@@ -162,7 +152,6 @@ export default function Card(props: Props){
             >
             {props.name}
             </Typography>
-
             <Box
                 sx={{
                     width: '100%',
